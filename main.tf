@@ -13,8 +13,8 @@ resource "aws_ecs_task_definition" "this" {
   network_mode       = "awsvpc"
   memory             = var.memory
   cpu                = var.cpu
-  execution_role_arn = "arn:aws:iam::015452888753:role/ecsTaskExecutionRole"
-  task_role_arn      = "arn:aws:iam::015452888753:role/ecsTaskExecutionRole"
+  execution_role_arn = aws_iam_role.this_task_execution_role.arn
+  task_role_arn      = aws_iam_role.this_task_execution_role.arn
 
   dynamic "volume" {
     for_each = var.volumes
