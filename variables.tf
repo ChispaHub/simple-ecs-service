@@ -62,11 +62,6 @@ variable "assign_public_ip" {
   default     = false
 }
 
-variable "container_image_repository" {
-  description = "The Docker repository where the container image is located"
-  type        = string
-}
-
 variable "container_image_tag" {
   description = "The tag of the container image to use"
   type        = string

@@ -3,7 +3,7 @@ resource "aws_ecs_task_definition" "this" {
   requires_compatibilities = ["FARGATE"]
   container_definitions = templatefile("${path.module}/task_definition.tpl", {
     container_name    = var.container_name
-    image_repository  = var.container_image_repository
+    image_repository  = aws_ecr_repository.this.repository_url
     image_tag         = var.container_image_tag
     container_memory  = var.memory
     container_port    = var.container_port
