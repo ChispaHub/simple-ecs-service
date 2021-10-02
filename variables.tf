@@ -43,12 +43,6 @@ variable "container_port" {
   type        = string
 }
 
-variable "exposed_port" {
-  description = "Create a load balancer for this service and expose the container port at this port. Example: Expose port 80 for HTTP"
-  type        = string
-  default     = ""
-}
-
 variable "volumes" {
   description = "A list of objects containing the names of the storage volumes to allocate"
   type = set(object({
@@ -64,6 +58,11 @@ variable "assign_public_ip" {
 
 variable "container_image_tag" {
   description = "The tag of the container image to use"
+  type        = string
+}
+
+variable "certificate_arn" {
+  description = "The ARN of the TLS certificate to use in the HTTPS listener"
   type        = string
 }
 

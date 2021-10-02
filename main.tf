@@ -34,7 +34,7 @@ resource "aws_security_group" "this" {
     from_port        = var.container_port
     to_port          = var.container_port
     protocol         = "tcp"
-    security_groups  = [aws_security_group.this-lb[0].id]
+    security_groups  = [aws_security_group.this-lb.id]
     ipv6_cidr_blocks = []
   }
 
@@ -65,7 +65,7 @@ resource "aws_ecs_service" "this" {
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.this[0].arn
+    target_group_arn = aws_lb_target_group.this.arn
     container_name   = var.container_name
     container_port   = var.container_port
   }
